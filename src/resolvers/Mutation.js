@@ -49,12 +49,16 @@ async function vote(parent, args, context, info) {
   });
 }
 
-function post(parent, args, context, info) {
+function post(parent, { url, description }, context) {
   const userId = getUserId(context);
   return context.prisma.createLink({
-    url: args.url,
-    description: args.description,
-    postedBy: { connect: { id: userId } }
+    url,
+    description,
+    postedBy: {
+      connect: {
+        id: userId
+      }
+    }
   });
 }
 
