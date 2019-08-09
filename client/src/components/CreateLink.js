@@ -5,12 +5,17 @@ import { FEED_QUERY } from "./LinkList";
 import { LINKS_PER_PAGE } from "../constants";
 
 const POST_MUTATION = gql`
-  mutation PostMutation($description: String!, $url: String!) {
-    post(description: $description, url: $url) {
+  mutation PostMutation(
+    $description: String!
+    $url: String!
+    $content: String!
+  ) {
+    post(description: $description, url: $url, content: $content) {
       id
       url
       createdAt
       description
+      content
     }
   }
 `;
@@ -18,11 +23,12 @@ const POST_MUTATION = gql`
 class CreateLink extends Component {
   state = {
     description: "",
-    url: ""
+    url: "",
+    content: ""
   };
 
   render() {
-    const { description, url } = this.state;
+    const { description, url, content } = this.state;
     return (
       <div>
         <div className="flex flex-column mt3">
@@ -32,6 +38,13 @@ class CreateLink extends Component {
             onChange={e => this.setState({ description: e.target.value })}
             type="text"
             placeholder="A description for the link"
+          />
+          <textarea
+            className="mb2"
+            value={content}
+            onChange={e => this.setState({ content: e.target.value })}
+            type="text"
+            placeholder="Content for the link"
           />
           <input
             className="mb2"
@@ -43,7 +56,7 @@ class CreateLink extends Component {
         </div>
         <Mutation
           mutation={POST_MUTATION}
-          variables={{ description, url }}
+          variables={{ description, url, content }}
           onCompleted={() => this.props.history.push("/new/1")}
           update={(store, { data: { post } }) => {
             const first = LINKS_PER_PAGE;

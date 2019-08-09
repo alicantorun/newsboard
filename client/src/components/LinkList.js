@@ -10,6 +10,7 @@ const NEW_LINKS_SUBSCRIPTION = gql`
       id
       url
       description
+      content
       createdAt
       postedBy {
         id
@@ -33,6 +34,7 @@ export const FEED_QUERY = gql`
         createdAt
         url
         description
+        content
         postedBy {
           id
           name
@@ -57,6 +59,7 @@ const NEW_VOTES_SUBSCRIPTION = gql`
         id
         url
         description
+        content
         createdAt
         postedBy {
           id

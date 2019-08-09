@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+input,
+textarea {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  width: 400px;
+}
+
+textarea {
+  height: 10em;
+}

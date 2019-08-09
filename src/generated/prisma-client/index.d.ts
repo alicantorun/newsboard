@@ -182,6 +182,8 @@ export type LinkOrderByInput =
   | "createdAt_DESC"
   | "description_ASC"
   | "description_DESC"
+  | "content_ASC"
+  | "content_DESC"
   | "url_ASC"
   | "url_DESC";
 
@@ -254,6 +256,20 @@ export interface LinkWhereInput {
   description_not_starts_with?: Maybe<String>;
   description_ends_with?: Maybe<String>;
   description_not_ends_with?: Maybe<String>;
+  content?: Maybe<String>;
+  content_not?: Maybe<String>;
+  content_in?: Maybe<String[] | String>;
+  content_not_in?: Maybe<String[] | String>;
+  content_lt?: Maybe<String>;
+  content_lte?: Maybe<String>;
+  content_gt?: Maybe<String>;
+  content_gte?: Maybe<String>;
+  content_contains?: Maybe<String>;
+  content_not_contains?: Maybe<String>;
+  content_starts_with?: Maybe<String>;
+  content_not_starts_with?: Maybe<String>;
+  content_ends_with?: Maybe<String>;
+  content_not_ends_with?: Maybe<String>;
   url?: Maybe<String>;
   url_not?: Maybe<String>;
   url_in?: Maybe<String[] | String>;
@@ -370,6 +386,7 @@ export interface UserUpdateManyMutationInput {
 export interface LinkCreateWithoutPostedByInput {
   id?: Maybe<ID_Input>;
   description: String;
+  content: String;
   url: String;
   votes?: Maybe<VoteCreateManyWithoutLinkInput>;
 }
@@ -384,6 +401,7 @@ export interface UserUpdateInput {
 
 export interface LinkUpdateInput {
   description?: Maybe<String>;
+  content?: Maybe<String>;
   url?: Maybe<String>;
   postedBy?: Maybe<UserUpdateOneWithoutLinksInput>;
   votes?: Maybe<VoteUpdateManyWithoutLinkInput>;
@@ -391,6 +409,7 @@ export interface LinkUpdateInput {
 
 export interface LinkUpdateManyMutationInput {
   description?: Maybe<String>;
+  content?: Maybe<String>;
   url?: Maybe<String>;
 }
 
@@ -431,6 +450,20 @@ export interface LinkScalarWhereInput {
   description_not_starts_with?: Maybe<String>;
   description_ends_with?: Maybe<String>;
   description_not_ends_with?: Maybe<String>;
+  content?: Maybe<String>;
+  content_not?: Maybe<String>;
+  content_in?: Maybe<String[] | String>;
+  content_not_in?: Maybe<String[] | String>;
+  content_lt?: Maybe<String>;
+  content_lte?: Maybe<String>;
+  content_gt?: Maybe<String>;
+  content_gte?: Maybe<String>;
+  content_contains?: Maybe<String>;
+  content_not_contains?: Maybe<String>;
+  content_starts_with?: Maybe<String>;
+  content_not_starts_with?: Maybe<String>;
+  content_ends_with?: Maybe<String>;
+  content_not_ends_with?: Maybe<String>;
   url?: Maybe<String>;
   url_not?: Maybe<String>;
   url_in?: Maybe<String[] | String>;
@@ -463,6 +496,7 @@ export interface UserUpdateWithoutLinksDataInput {
 
 export interface LinkUpdateManyDataInput {
   description?: Maybe<String>;
+  content?: Maybe<String>;
   url?: Maybe<String>;
 }
 
@@ -574,6 +608,7 @@ export interface LinkCreateOneWithoutVotesInput {
 
 export interface LinkUpdateWithoutPostedByDataInput {
   description?: Maybe<String>;
+  content?: Maybe<String>;
   url?: Maybe<String>;
   votes?: Maybe<VoteUpdateManyWithoutLinkInput>;
 }
@@ -591,6 +626,7 @@ export interface VoteSubscriptionWhereInput {
 
 export interface LinkUpdateWithoutVotesDataInput {
   description?: Maybe<String>;
+  content?: Maybe<String>;
   url?: Maybe<String>;
   postedBy?: Maybe<UserUpdateOneWithoutLinksInput>;
 }
@@ -649,6 +685,7 @@ export interface VoteScalarWhereInput {
 export interface LinkCreateInput {
   id?: Maybe<ID_Input>;
   description: String;
+  content: String;
   url: String;
   postedBy?: Maybe<UserCreateOneWithoutLinksInput>;
   votes?: Maybe<VoteCreateManyWithoutLinkInput>;
@@ -756,6 +793,7 @@ export type UserWhereUniqueInput = AtLeastOne<{
 export interface LinkCreateWithoutVotesInput {
   id?: Maybe<ID_Input>;
   description: String;
+  content: String;
   url: String;
   postedBy?: Maybe<UserCreateOneWithoutLinksInput>;
 }
@@ -1083,6 +1121,7 @@ export interface LinkPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   description: String;
+  content: String;
   url: String;
 }
 
@@ -1092,6 +1131,7 @@ export interface LinkPreviousValuesPromise
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
+  content: () => Promise<String>;
   url: () => Promise<String>;
 }
 
@@ -1101,6 +1141,7 @@ export interface LinkPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
+  content: () => Promise<AsyncIterator<String>>;
   url: () => Promise<AsyncIterator<String>>;
 }
 
@@ -1133,6 +1174,7 @@ export interface Link {
   id: ID_Output;
   createdAt: DateTimeOutput;
   description: String;
+  content: String;
   url: String;
 }
 
@@ -1140,6 +1182,7 @@ export interface LinkPromise extends Promise<Link>, Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
+  content: () => Promise<String>;
   url: () => Promise<String>;
   postedBy: <T = UserPromise>() => T;
   votes: <T = FragmentableArray<Vote>>(args?: {
@@ -1159,6 +1202,7 @@ export interface LinkSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   description: () => Promise<AsyncIterator<String>>;
+  content: () => Promise<AsyncIterator<String>>;
   url: () => Promise<AsyncIterator<String>>;
   postedBy: <T = UserSubscription>() => T;
   votes: <T = Promise<AsyncIterator<VoteSubscription>>>(args?: {
@@ -1178,6 +1222,7 @@ export interface LinkNullablePromise
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   description: () => Promise<String>;
+  content: () => Promise<String>;
   url: () => Promise<String>;
   postedBy: <T = UserPromise>() => T;
   votes: <T = FragmentableArray<Vote>>(args?: {

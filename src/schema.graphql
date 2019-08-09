@@ -20,18 +20,19 @@ type Feed {
 }
 
 type Mutation {
-  post(url: String!, description: String!): Link!
+  post(url: String!, description: String!, content: String!): Link!
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
   vote(linkId: ID!): Vote
-  updateLink(id: ID!, url: String, description: String): Link
-  deleteLink(id: ID!): Link
+  #   updateLink(id: ID!, url: String, description: String): Link
+  #   deleteLink(id: ID!): Link
 }
 
 type Link {
   id: ID!
   createdAt: DateTime!
   description: String!
+  content: String!
   url: String!
   postedBy: User
   votes: [Vote!]!

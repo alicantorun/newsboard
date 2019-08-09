@@ -51,6 +51,9 @@ class Link extends Component {
             {this.props.link.description} ({this.props.link.url})
           </div>
           <div className="f6 lh-copy gray">
+            {this.props.link.content.substring(0, 100)} ...
+          </div>
+          <div className="f6 lh-copy gray">
             {this.props.link.votes.length} votes | by{" "}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name

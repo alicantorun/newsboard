@@ -25,6 +25,7 @@ type Link {
   id: ID!
   createdAt: DateTime!
   description: String!
+  content: String!
   url: String!
   postedBy: User
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote!]
@@ -39,6 +40,7 @@ type LinkConnection {
 input LinkCreateInput {
   id: ID
   description: String!
+  content: String!
   url: String!
   postedBy: UserCreateOneWithoutLinksInput
   votes: VoteCreateManyWithoutLinkInput
@@ -57,6 +59,7 @@ input LinkCreateOneWithoutVotesInput {
 input LinkCreateWithoutPostedByInput {
   id: ID
   description: String!
+  content: String!
   url: String!
   votes: VoteCreateManyWithoutLinkInput
 }
@@ -64,6 +67,7 @@ input LinkCreateWithoutPostedByInput {
 input LinkCreateWithoutVotesInput {
   id: ID
   description: String!
+  content: String!
   url: String!
   postedBy: UserCreateOneWithoutLinksInput
 }
@@ -80,6 +84,8 @@ enum LinkOrderByInput {
   createdAt_DESC
   description_ASC
   description_DESC
+  content_ASC
+  content_DESC
   url_ASC
   url_DESC
 }
@@ -88,6 +94,7 @@ type LinkPreviousValues {
   id: ID!
   createdAt: DateTime!
   description: String!
+  content: String!
   url: String!
 }
 
@@ -128,6 +135,20 @@ input LinkScalarWhereInput {
   description_not_starts_with: String
   description_ends_with: String
   description_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
   url: String
   url_not: String
   url_in: [String!]
@@ -167,6 +188,7 @@ input LinkSubscriptionWhereInput {
 
 input LinkUpdateInput {
   description: String
+  content: String
   url: String
   postedBy: UserUpdateOneWithoutLinksInput
   votes: VoteUpdateManyWithoutLinkInput
@@ -174,11 +196,13 @@ input LinkUpdateInput {
 
 input LinkUpdateManyDataInput {
   description: String
+  content: String
   url: String
 }
 
 input LinkUpdateManyMutationInput {
   description: String
+  content: String
   url: String
 }
 
@@ -208,12 +232,14 @@ input LinkUpdateOneRequiredWithoutVotesInput {
 
 input LinkUpdateWithoutPostedByDataInput {
   description: String
+  content: String
   url: String
   votes: VoteUpdateManyWithoutLinkInput
 }
 
 input LinkUpdateWithoutVotesDataInput {
   description: String
+  content: String
   url: String
   postedBy: UserUpdateOneWithoutLinksInput
 }
@@ -271,6 +297,20 @@ input LinkWhereInput {
   description_not_starts_with: String
   description_ends_with: String
   description_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
   url: String
   url_not: String
   url_in: [String!]
