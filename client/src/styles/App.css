@@ -43,3 +43,11 @@ textarea {
 textarea {
   height: 10em;
 }
+
+.linkUrl {
+  text-decoration: none;
+}
+
+.linkUrl:hover {
+  text-decoration: underline;
+}

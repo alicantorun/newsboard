@@ -48,7 +48,10 @@ class Link extends Component {
         </div>
         <div className="ml1">
           <div>
-            {this.props.link.description} ({this.props.link.url})
+            {this.props.link.description}{" "}
+            <a className="linkUrl f6 lh-copy gray" href={this.props.link.url}>
+              ({this.props.link.url.toLowerCase()})
+            </a>
           </div>
           <div className="f6 lh-copy gray">
             {this.props.link.content.substring(0, 100)} ...
